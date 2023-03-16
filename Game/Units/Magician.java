@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Magician extends WizzardClass {
 
-     public Magician(String name) {
-          super(name, 30, 17, 5, 5, 12, 9,100,false);
+     public Magician(String name, int x, int y) {
+          super(name, 30, 17, 5, 5, 12, 9,100,false,x,y);
      }
 
      @Override

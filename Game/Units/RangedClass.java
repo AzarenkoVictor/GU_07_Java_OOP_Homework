@@ -8,8 +8,8 @@ public abstract class RangedClass extends BaseHero {
     protected int arrows;
 
     public RangedClass(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
-            int arrows, boolean hasDelivery) {
-        super(name, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery);
+            int arrows, boolean hasDelivery, int x, int y) {
+        super(name, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery, x, y);
         this.arrows = arrows;
     }
 

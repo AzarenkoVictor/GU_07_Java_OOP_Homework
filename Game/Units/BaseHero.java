@@ -1,5 +1,6 @@
 package Units;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseHero implements UnitInterface {
@@ -20,9 +21,10 @@ public abstract class BaseHero implements UnitInterface {
 
      protected boolean isAlive = true;
      protected boolean canDelivery;
+     protected Position position;
 
      public BaseHero(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
-               boolean canDelivery) {
+               boolean canDelivery, int x, int y) {
           this.name = name;
           this.maxHp = maxHp;
           this.attack = attack;
@@ -31,6 +33,7 @@ public abstract class BaseHero implements UnitInterface {
           this.canDelivery = canDelivery;
           this.minDamage = minDamage;
           this.maxDamage = maxDamage;
+          position = new Position(x, y);
      }
 
      @Override
@@ -83,8 +86,22 @@ public abstract class BaseHero implements UnitInterface {
           this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
      }
 
+     protected BaseHero getNearest(ArrayList<BaseHero> team) {
+          double minDistance = 10;
+          int index = 0;
+          for (int i = 0; i < team.size(); i++) {
+               double distance = team.get(i).position.getDistance(team.get(i).position);
+               if (distance < minDistance) {
+                    minDistance = distance;
+                    index = i;
+               }
+          }
+          return team.get(index);
+     }
+
      @Override
      public int compare(BaseHero o1, BaseHero o2) {
           return o1.getSpeed() - o2.getSpeed();
      }
+
 }

@@ -16,37 +16,37 @@ public class Game {
                switch (new Random().nextInt(3)) {
 
                     case 0:
-                         darkHeroes.add(new Archer("Стрелок"));
+                         darkHeroes.add(new Archer("Стрелок",0, i));
                          break;
                     case 1:
-                         lightHeroes.add(new Countryman("Деревеньщина"));
+                         lightHeroes.add(new Countryman("Деревеньщина",0,i));
                          break;
 
                     case 2:
-                         lightHeroes.add(new Magician("Маг"));
+                         lightHeroes.add(new Magician("Маг",0, i));
                          break;
 
                     case 3:
-                         lightHeroes.add(new Rogue("Разбойник"));
+                         lightHeroes.add(new Rogue("Разбойник",0, i));
                          break;
                }
 
                switch (new Random().nextInt(3)) {
 
                     case 0:
-                         darkHeroes.add(new Countryman("Деревеньщина"));
+                         darkHeroes.add(new Countryman("Деревеньщина",9, i));
                          break;
 
                     case 1:
-                         darkHeroes.add(new Spearman("Копейщик"));
+                         darkHeroes.add(new Spearman("Копейщик",9, i));
                          break;
 
                     case 2:
-                         darkHeroes.add(new Crossbowman("Арбалетчик"));
+                         darkHeroes.add(new Crossbowman("Арбалетчик",9, i));
                          break;
 
                     case 3:
-                         darkHeroes.add(new Priest("Лекарь"));
+                         darkHeroes.add(new Priest("Лекарь",9, i));
                          break;
 
                }
