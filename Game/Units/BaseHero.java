@@ -1,41 +1,81 @@
 package Units;
 
-// import java.util.Random;
+import java.util.Random;
 
 public abstract class BaseHero implements UnitInterface {
 
-     public static final int MAX_LEVEL = 99;
      public static final int MAX_HP = 100000;
      public static final int MAX_MP = 10000;
 
      protected String name;
+     protected int attack;
+     protected int protection;
 
-     protected int level;
      protected int maxHp;
      protected int hp = maxHp;
-     protected int baseDamage;
-     protected int baseProtection;
-
+     protected int speed;
+     protected int minDamage;
+     protected int maxDamage;
      protected int damage;
 
-     public BaseHero(String name, int level, int maxHp, int baseDamage, int baseProtection) {
+     protected boolean isAlive = true;
+     protected boolean canDelivery;
+
+     public BaseHero(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
+               boolean canDelivery) {
           this.name = name;
-          this.level = level;
           this.maxHp = maxHp;
-          this.baseDamage = baseDamage;
-          this.baseProtection = baseProtection;
+          this.attack = attack;
+          this.protection = protection;
+          this.speed = speed;
+          this.canDelivery = canDelivery;
+          this.minDamage = minDamage;
+          this.maxDamage = maxDamage;
      }
+
      @Override
      public String getInfo() {
-          // return String.format(" %s Type: %s - Level: %d\n Hp: %d/%d",
-          // this.name, this.getClass().getSimpleName(), this.level, this.hp, this.maxHp);
           return " ";
      }
 
-     public void GetDamage(int damage) {
-          int currDamage = damage - baseProtection * level;
-          if (this.hp - currDamage > 0) {
-               this.hp -= currDamage;
+     public String getName() {
+          return name;
+     }
+
+     @Override
+     public String toString() {
+          return String.format("Имя: %s \n(Здоровье: %d/%d; Атака: %d; Защита: %d, Скорость: %d)",
+                    name, hp, maxHp, attack, protection, speed);
+     }
+
+     public boolean isAlive() {
+          return isAlive;
+     }
+
+     public boolean getDelivery() {
+          return canDelivery;
+     }
+
+     public int getSpeed() {
+          return speed;
+     }
+
+     public int getProtection() {
+          return protection;
+     }
+
+     public void getDamage(int attack, int minDamage, int maxDamage) {
+
+          if (attack >= protection) {
+               damage = new Random().nextInt(minDamage, maxDamage);
+          } else {
+               damage = minDamage;
+          }
+
+          if (hp > damage) {
+               hp = hp - damage;
+          } else {
+               isAlive = false;
           }
      }
 
@@ -43,8 +83,8 @@ public abstract class BaseHero implements UnitInterface {
           this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
      }
 
-     public String getName() {
-          return name;
+     @Override
+     public int compare(BaseHero o1, BaseHero o2) {
+          return o1.getSpeed() - o2.getSpeed();
      }
-
 }

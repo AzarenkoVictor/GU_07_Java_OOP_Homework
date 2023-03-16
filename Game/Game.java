@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 import Units.*;
@@ -7,81 +8,78 @@ public class Game {
 
      public static void main(String[] args) {
 
-          ArrayList<BaseHero> LightHeroes = new ArrayList<>();
-          ArrayList<BaseHero> DarkHeroes = new ArrayList<>();
+          ArrayList<BaseHero> lightHeroes = new ArrayList<>();
+          ArrayList<BaseHero> darkHeroes = new ArrayList<>();
 
           for (int i = 0; i < 10; i++) {
 
-               switch (new Random().nextInt(5)) {
-                    case 0:
-                         LightHeroes.add(new Archer("Стрелок"));
-                         break;
+               switch (new Random().nextInt(3)) {
 
+                    case 0:
+                         darkHeroes.add(new Archer("Стрелок"));
+                         break;
                     case 1:
-                         LightHeroes.add(new Countryman("Деревеньщина"));
+                         lightHeroes.add(new Countryman("Деревеньщина"));
                          break;
 
                     case 2:
-                         LightHeroes.add(new Magician("Маг"));
+                         lightHeroes.add(new Magician("Маг"));
                          break;
 
                     case 3:
-                         LightHeroes.add(new Priest("Лекарь"));
-                         break;
-
-                    case 4:
-                         LightHeroes.add(new Rogue("Разбойник"));
-                         break;
-
-                    case 5:
-                         LightHeroes.add(new Spearman("Копейщик"));
-                         break;
-
-                    case 6:
-                         LightHeroes.add(new Crossbowman("Арбалетчик"));
+                         lightHeroes.add(new Rogue("Разбойник"));
                          break;
                }
 
-               switch (new Random().nextInt(5)) {
+               switch (new Random().nextInt(3)) {
+
                     case 0:
-                         DarkHeroes.add(new Archer("Стрелок"));
+                         darkHeroes.add(new Countryman("Деревеньщина"));
                          break;
 
                     case 1:
-                         DarkHeroes.add(new Countryman("Деревеньщина"));
+                         darkHeroes.add(new Spearman("Копейщик"));
                          break;
 
                     case 2:
-                         DarkHeroes.add(new Magician("Маг"));
+                         darkHeroes.add(new Crossbowman("Арбалетчик"));
                          break;
 
                     case 3:
-                         DarkHeroes.add(new Priest("Лекарь"));
+                         darkHeroes.add(new Priest("Лекарь"));
                          break;
 
-                    case 4:
-                         DarkHeroes.add(new Rogue("Разбойник"));
-                         break;
-
-                    case 5:
-                         DarkHeroes.add(new Spearman("Копейщик"));
-                         break;
-
-                    case 6:
-                         DarkHeroes.add(new Crossbowman("Арбалетчик"));
-                         break;
                }
           }
 
-          System.out.println("Light Heroes");
+          // System.out.println(" Light Heroes\n");
 
-          for (BaseHero heroes : LightHeroes) {
-               System.out.println(heroes.getInfo());
-          }
-          System.out.println("Dark Heroes");
+          // for (BaseHero heroes : lightHeroes) {
+          // System.out.println(heroes.getInfo());
+          // System.out.println(heroes.toString());
+          // System.out.println(" ");
+          // }
+          // System.out.println(" ");
+          // System.out.println(" Dark Heroes\n");
 
-          for (BaseHero heroes : DarkHeroes) {
-               System.out.println(heroes.getInfo());
-          }
+          // for (BaseHero heroes : darkHeroes) {
+          // System.out.println(heroes.getInfo());
+          // System.out.println(heroes.toString());
+          // System.out.println(" ");
+          // }
+
+          ArrayList<BaseHero> heroes = new ArrayList<>();
+          heroes.addAll(darkHeroes);
+          heroes.addAll(lightHeroes);
+
+          heroes.sort(new Comparator<BaseHero>() {
+               @Override
+               public int compare(BaseHero o1, BaseHero o2) {
+                    return o1.getSpeed() - o2.getSpeed();
+               }
+          });
+          System.out.println("Отсортированные герои:");
+          for (BaseHero hero : heroes)
+               System.out.println(hero.getInfo() + " " + hero.toString() + "\n");
      }
 }

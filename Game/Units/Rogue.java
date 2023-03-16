@@ -1,20 +1,19 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Rogue extends MeleeClass {
      public Rogue(String name) {
-          super(name, 1, 1000, 200, 50);
+          super(name, 10, 8, 2, 4, 3, 6, false);
      }
 
      @Override
      public String getInfo() {
-          // return String.format(" %s Type: %s - Level: %d\n Hp: %d/%d",
-          // super.getInfo());
           return "Разбойник";
      }
 
      @Override
-     public void step() {
+     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
           System.out.println("Разбойник ударил дубиной");
-          ;
      }
 }

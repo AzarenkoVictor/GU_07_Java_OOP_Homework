@@ -1,28 +1,27 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Magician extends WizzardClass {
 
      public Magician(String name) {
-          super(name, 1, 1000, 1000, 100, 50);
+          super(name, 30, 17, 5, 5, 12, 9,100,false);
      }
 
      @Override
      public String getInfo() {
-          // return String.format(" %s Type: %s - Level: %d\n Hp: %d/%d Mp: %d/%d ",
-          // super.getInfo());
           return "Маг ";
      }
 
      public void magicAttack(BaseHero target) {
           if (mp > 100) {
-               damage = baseDamage * level / 2;
-               target.GetDamage(damage);
+               target.getDamage(attack, minDamage, maxDamage);
                mp -= 100;
           }
      }
 
      @Override
-     public void step() {
+     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
           System.out.println("Маг скастовал заклинание");
           ;
      }

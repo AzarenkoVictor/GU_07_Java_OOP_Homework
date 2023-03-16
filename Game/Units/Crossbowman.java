@@ -1,19 +1,20 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Crossbowman extends RangedClass {
      public Crossbowman(String name) {
-          super(name, 1, 1000, 200, 50, 100);
+          super(name, 10, 6, 2, 3, 3, 4,
+                    16, false);
      }
 
      @Override
      public String getInfo() {
-          // return String.format(" %s Type: %s - Level: %d\n Hp: %d/%d Arrows: %d ",
-          // super.getInfo());
           return "Арбалетчик";
      }
 
      @Override
-     public void step() {
+     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
           System.out.println("Арбалетчик выстрелил болт");
      }
 }

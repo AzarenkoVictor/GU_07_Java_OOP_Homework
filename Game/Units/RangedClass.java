@@ -1,30 +1,31 @@
 package Units;
 
+import java.util.ArrayList;
+
 public abstract class RangedClass extends BaseHero {
 
     public static final int MAX_ARROWS = 1000;
     protected int arrows;
 
-    public RangedClass(String name, int level, int maxHp, int baseDamage, int baseProtection, int arrows) {
-        super(name, level, maxHp, baseDamage, baseProtection);
+    public RangedClass(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
+            int arrows, boolean hasDelivery) {
+        super(name, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery);
         this.arrows = arrows;
     }
+
     @Override
     public String getInfo() {
-        // return String.format(" %s Type: %s - Level: %d\n Hp: %d/%d",
-        // super.getInfo(), this,arrows);
         return " ";
     }
 
     public void rangeAttack(BaseHero target) {
         if (arrows > 0) {
-            damage = baseDamage * level / 10;
-            target.GetDamage(damage);
+            target.getDamage(attack, minDamage, maxDamage);
             arrows -= 1;
         }
     }
 
-    public void step() {
+    public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
         System.out.println(" ");
     }
 }

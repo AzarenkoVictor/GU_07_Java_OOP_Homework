@@ -1,19 +1,19 @@
 package Units;
 
+import java.util.ArrayList;
+
 public class Spearman extends MeleeClass {
      public Spearman(String name) {
-          super(name, 1, 1000, 150, 70);
+          super(name, 10, 4, 1, 3, 5, 4, false);
      }
 
      @Override
      public String getInfo() {
-          // return String.format(" %s Type: %s - Level: %d\n Hp: %d/%d",
-          // super.getInfo());
           return "Копейщик";
      }
 
      @Override
-     public void step() {
+     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
           System.out.println("Копейщик ударил копьем");
           ;
      }
