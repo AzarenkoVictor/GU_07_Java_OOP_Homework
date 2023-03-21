@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Countryman extends BaseHero {
 
      public Countryman(String name, int x, int y) {
-          super(name, 1, 1, 1, 1, 1, 3, true, x, y);
+          super(name, "Крестьянин", 1, 1, 1, 1, 1, 3, true, x, y);
      }
 
      @Override

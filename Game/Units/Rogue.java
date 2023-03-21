@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Rogue extends MeleeClass {
      public Rogue(String name, int x, int y) {
-          super(name, 10, 8, 2, 4, 3, 6, false,x,y);
+          super(name, "Разбойник", 10, 8, 2, 4, 3, 6, false,x,y);
      }
 
      @Override

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Crossbowman extends RangedClass {
      public Crossbowman(String name, int x, int y) {
-          super(name, 10, 6, 2, 3, 3, 4,
+          super(name, "Арбалетчик", 10, 6, 2, 3, 3, 4,
                     16, false, x, y);
      }
 

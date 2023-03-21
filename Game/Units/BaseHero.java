@@ -9,6 +9,7 @@ public abstract class BaseHero implements UnitInterface {
      public static final int MAX_MP = 10000;
 
      protected String name;
+     protected String type;
      protected int attack;
      protected int protection;
 
@@ -23,9 +24,10 @@ public abstract class BaseHero implements UnitInterface {
      protected boolean canDelivery;
      protected Position position;
 
-     public BaseHero(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
+     public BaseHero(String name, String type, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
                boolean canDelivery, int x, int y) {
           this.name = name;
+          this.type = type;
           this.maxHp = maxHp;
           this.attack = attack;
           this.protection = protection;
@@ -45,10 +47,19 @@ public abstract class BaseHero implements UnitInterface {
           return name;
      }
 
+     public String getType() {
+          return type;
+     }
+
+     // @Override
+     // public String toString() {
+     //      return String.format("Имя: %s \n(Здоровье: %d/%d; Атака: %d; Защита: %d, Скорость: %d)",
+     //                name, hp, maxHp, attack, protection, speed);
+     // }
+
      @Override
      public String toString() {
-          return String.format("Имя: %s \n(Здоровье: %d/%d; Атака: %d; Защита: %d, Скорость: %d)",
-                    name, hp, maxHp, attack, protection, speed);
+         return String.format("\t%-12s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥️%-3d%%", type, attack, protection, (int)(hp * 100 / maxHp));
      }
 
      public boolean isAlive() {
@@ -59,8 +70,17 @@ public abstract class BaseHero implements UnitInterface {
           return canDelivery;
      }
 
+     public int getHp() {
+          return hp;
+     }
+
      public int getSpeed() {
           return speed;
+     }
+
+
+     public Position getPosition() {
+          return position;
      }
 
      public int getProtection() {

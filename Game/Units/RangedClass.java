@@ -7,9 +7,9 @@ public abstract class RangedClass extends BaseHero {
     public static final int MAX_ARROWS = 1000;
     protected int arrows;
 
-    public RangedClass(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
+    public RangedClass(String name, String type, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
             int arrows, boolean hasDelivery, int x, int y) {
-        super(name, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery, x, y);
+        super(name, type, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery, x, y);
         this.arrows = arrows;
     }
 

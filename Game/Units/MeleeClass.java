@@ -1,9 +1,9 @@
 package Units;
 
 public abstract class MeleeClass extends BaseHero {
-     public MeleeClass(String name, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
+     public MeleeClass(String name, String type, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
                boolean hasDelivery, int x, int y) {
-          super(name, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery, x, y);
+          super(name, type, maxHp, attack, minDamage, maxDamage, protection, speed, hasDelivery, x, y);
      }
 
      public void attack(BaseHero target) {

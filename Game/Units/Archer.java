@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Archer extends RangedClass {
 
      public Archer(String name, int x, int y) {
-          super(name, 15, 12, 8, 10, 10, 9,
+          super(name, "Лучник ", 15, 12, 8, 10, 10, 9,
                     32, false, x, y);
      }
 

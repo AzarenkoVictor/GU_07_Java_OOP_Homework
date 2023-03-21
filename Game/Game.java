@@ -1,85 +1,82 @@
 import java.util.ArrayList;
-import java.util.Comparator;
+// import java.util.Comparator;
 import java.util.Random;
 
 import Units.*;
 
 public class Game {
 
-     public static void main(String[] args) {
+     public static void createHeroes(String[] args) {
 
-          ArrayList<BaseHero> lightHeroes = new ArrayList<>();
-          ArrayList<BaseHero> darkHeroes = new ArrayList<>();
+          Main.lightHeroes = new ArrayList<>();
+          Main.darkHeroes = new ArrayList<>();
 
-          for (int i = 0; i < 10; i++) {
+          for (int i = 1; i < Main.GANG_SIZE + 1; i++) {
 
                switch (new Random().nextInt(3)) {
 
                     case 0:
-                         darkHeroes.add(new Archer("Стрелок",0, i));
+                         Main.lightHeroes.add(new Archer(getName(), 1, i));
                          break;
                     case 1:
-                         lightHeroes.add(new Countryman("Деревеньщина",0,i));
+                         Main.lightHeroes.add(new Countryman(getName(), 1, i));
                          break;
 
                     case 2:
-                         lightHeroes.add(new Magician("Маг",0, i));
+                         Main.lightHeroes.add(new Magician(getName(), 1, i));
                          break;
 
                     case 3:
-                         lightHeroes.add(new Rogue("Разбойник",0, i));
+                         Main.lightHeroes.add(new Rogue(getName(), 1, i));
                          break;
                }
 
                switch (new Random().nextInt(3)) {
 
                     case 0:
-                         darkHeroes.add(new Countryman("Деревеньщина",9, i));
+                         Main.darkHeroes.add(new Countryman(getName(), 10, i));
                          break;
 
                     case 1:
-                         darkHeroes.add(new Spearman("Копейщик",9, i));
+                         Main.darkHeroes.add(new Spearman(getName(), 10, i));
                          break;
 
                     case 2:
-                         darkHeroes.add(new Crossbowman("Арбалетчик",9, i));
+                         Main.darkHeroes.add(new Crossbowman(getName(), 10, i));
                          break;
 
                     case 3:
-                         darkHeroes.add(new Priest("Лекарь",9, i));
+                         Main.darkHeroes.add(new Priest(getName(), 10, i));
                          break;
 
                }
           }
 
-          // System.out.println(" Light Heroes\n");
+          // ArrayList<BaseHero> heroes = new ArrayList<>();
+          // heroes.addAll(Main.darkHeroes);
+          // heroes.addAll(Main.lightHeroes);
 
-          // for (BaseHero heroes : lightHeroes) {
-          // System.out.println(heroes.getInfo());
-          // System.out.println(heroes.toString());
-          // System.out.println(" ");
+          // heroes.sort(new Comparator<BaseHero>() {
+          // @Override
+          // public int compare(BaseHero o1, BaseHero o2) {
+          // return o1.getSpeed() - o2.getSpeed();
           // }
-          // System.out.println(" ");
-          // System.out.println(" Dark Heroes\n");
+          // });
+     }
 
-          // for (BaseHero heroes : darkHeroes) {
-          // System.out.println(heroes.getInfo());
-          // System.out.println(heroes.toString());
-          // System.out.println(" ");
-          // }
+     // System.out.println("Отсортированные герои:");
+     // for (BaseHero hero : heroes)
+     // System.out.println(hero.getInfo() + " " + hero.toString() + "\n");
+     // }
 
-          ArrayList<BaseHero> heroes = new ArrayList<>();
-          heroes.addAll(darkHeroes);
-          heroes.addAll(lightHeroes);
+     public static void makeStep() {
+          for (int i = 0; i < Main.GANG_SIZE; i++) {
+               Main.lightHeroes.get(i).step(Main.lightHeroes, Main.darkHeroes);
+               Main.darkHeroes.get(i).step(Main.darkHeroes, Main.lightHeroes);
+          }
+     }
 
-          heroes.sort(new Comparator<BaseHero>() {
-               @Override
-               public int compare(BaseHero o1, BaseHero o2) {
-                    return o1.getSpeed() - o2.getSpeed();
-               }
-          });
-          System.out.println("Отсортированные герои:");
-          for (BaseHero hero : heroes)
-               System.out.println(hero.getInfo() + " " + hero.toString() + "\n");
+     private static String getName() {
+          return Names.values()[new Random().nextInt(Names.values().length)].toString();
      }
 }
