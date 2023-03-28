@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 // import java.util.Comparator;
 import java.util.Random;
 
@@ -48,35 +49,41 @@ public class Game {
                     case 3:
                          Main.darkHeroes.add(new Priest(getName(), 10, i));
                          break;
-
                }
-          }
-
-          // ArrayList<BaseHero> heroes = new ArrayList<>();
-          // heroes.addAll(Main.darkHeroes);
-          // heroes.addAll(Main.lightHeroes);
-
-          // heroes.sort(new Comparator<BaseHero>() {
-          // @Override
-          // public int compare(BaseHero o1, BaseHero o2) {
-          // return o1.getSpeed() - o2.getSpeed();
-          // }
-          // });
-     }
-
-     // System.out.println("Отсортированные герои:");
-     // for (BaseHero hero : heroes)
-     // System.out.println(hero.getInfo() + " " + hero.toString() + "\n");
-     // }
-
-     public static void makeStep() {
-          for (int i = 0; i < Main.GANG_SIZE; i++) {
-               Main.lightHeroes.get(i).step(Main.lightHeroes, Main.darkHeroes);
-               Main.darkHeroes.get(i).step(Main.darkHeroes, Main.lightHeroes);
           }
      }
 
      private static String getName() {
           return Names.values()[new Random().nextInt(Names.values().length)].toString();
+     }
+
+     public static boolean heroesAlive(ArrayList<BaseHero> team) {
+          for (BaseHero unit : team) {
+               if (unit.isAlive())
+                    return true;
+          }
+          return false;
+     }
+
+     public static void makeStep() {
+
+          Main.lightHeroes.sort(new Comparator<BaseHero>() {
+               @Override
+               public int compare(BaseHero o1, BaseHero o2) {
+                    return o2.getSpeed() - o1.getSpeed();
+               }
+          });
+
+          Main.darkHeroes.sort(new Comparator<BaseHero>() {
+               @Override
+               public int compare(BaseHero o1, BaseHero o2) {
+                    return o2.getSpeed() - o1.getSpeed();
+               }
+          });
+
+          for (int i = 0; i < Main.GANG_SIZE; i++) {
+               Main.lightHeroes.get(i).step(Main.lightHeroes, Main.darkHeroes);
+               Main.darkHeroes.get(i).step(Main.darkHeroes, Main.lightHeroes);
+          }
      }
 }

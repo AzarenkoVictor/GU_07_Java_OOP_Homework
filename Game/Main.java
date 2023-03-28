@@ -14,10 +14,11 @@ public class Main {
         Game.createHeroes(args);
 
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        while (Game.heroesAlive(lightHeroes) && Game.heroesAlive(darkHeroes)) {
             ConsoleView.view();
             Game.makeStep();
             scanner.nextLine();
         }
+        ConsoleView.view();
     }
 }

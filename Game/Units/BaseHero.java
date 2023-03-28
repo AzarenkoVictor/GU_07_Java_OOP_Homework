@@ -24,7 +24,8 @@ public abstract class BaseHero implements UnitInterface {
      protected boolean canDelivery;
      protected Position position;
 
-     public BaseHero(String name, String type, int maxHp, int attack, int minDamage, int maxDamage, int protection, int speed,
+     public BaseHero(String name, String type, int maxHp, int attack, int minDamage, int maxDamage, int protection,
+               int speed,
                boolean canDelivery, int x, int y) {
           this.name = name;
           this.type = type;
@@ -51,15 +52,10 @@ public abstract class BaseHero implements UnitInterface {
           return type;
      }
 
-     // @Override
-     // public String toString() {
-     //      return String.format("Имя: %s \n(Здоровье: %d/%d; Атака: %d; Защита: %d, Скорость: %d)",
-     //                name, hp, maxHp, attack, protection, speed);
-     // }
-
      @Override
      public String toString() {
-         return String.format("\t%-12s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥️%-3d%%", type, attack, protection, (int)(hp * 100 / maxHp));
+          return String.format("\t%-12s\t⚔️ %-3d\t\uD83D\uDEE1 %-3d\t♥️%-3d%%", type, attack, protection,
+                    (int) (hp * 100 / maxHp));
      }
 
      public boolean isAlive() {
@@ -77,7 +73,6 @@ public abstract class BaseHero implements UnitInterface {
      public int getSpeed() {
           return speed;
      }
-
 
      public Position getPosition() {
           return position;
@@ -119,9 +114,23 @@ public abstract class BaseHero implements UnitInterface {
           return team.get(index);
      }
 
+     protected BaseHero findTarget(ArrayList<BaseHero> team) {
+          float minDist = 13;
+          int index = 0;
+          for (int i = 0; i < team.size(); i++) {
+               if (team.get(i).isAlive()) {
+                    float dist = (float) position.getDistance(team.get(i).position);
+                    if (dist < minDist) {
+                         minDist = dist;
+                         index = i;
+                    }
+               }
+          }
+          return team.get(index);
+     }
+
      @Override
      public int compare(BaseHero o1, BaseHero o2) {
           return o1.getSpeed() - o2.getSpeed();
      }
-
 }
