@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface UnitInterface {
 
-     void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> target);
+     void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets);
 
      String getInfo();
 

@@ -23,38 +23,38 @@ public abstract class MeleeClass extends BaseHero {
           BaseHero target = findTarget(targets);
           if (isAlive) {
                if (position.getDistance(target.position) < 1.5) {
-                    target.getDamage(attack, minDamage, maxDamage);
+                    target.getDamage(this.attack, this.minDamage, this.maxDamage);
                }
           } else {
                this.move(target, attackers);
           }
      }
 
-     public void move(BaseHero unitAim, ArrayList<BaseHero> friends) {
+     public void move(BaseHero target, ArrayList<BaseHero> friendlyTarget) {
           Position temp = this.position;
-          int dX = this.position.getX() - unitAim.position.getX();
-          int dY = this.position.getY() - unitAim.position.getY();
+          int dX = this.position.getX() - target.position.getX();
+          int dY = this.position.getY() - target.position.getY();
           if (Math.abs(dX) >= Math.abs(dY)) {
                if (dX > 0) {
                     temp.setX(temp.getX() - 1);
-                    if (checkCells(temp, friends)) {
+                    if (checkCells(temp, friendlyTarget)) {
                          this.position.setX(this.position.getX() - 1);
                     }
                } else {
                     temp.setX(temp.getX() + 1);
-                    if (checkCells(temp, friends)) {
+                    if (checkCells(temp, friendlyTarget)) {
                          this.position.setX(this.position.getX() + 1);
                     }
                }
           } else {
                if (dY > 0) {
                     temp.setY(temp.getY() - 1);
-                    if (checkCells(temp, friends)) {
+                    if (checkCells(temp, friendlyTarget)) {
                          this.position.setY(this.position.getY() - 1);
                     }
                } else {
                     temp.setY(temp.getY() + 1);
-                    if (checkCells(temp, friends)) {
+                    if (checkCells(temp, friendlyTarget)) {
                          this.position.setY(this.position.getY() + 1);
                     }
                }

@@ -1,6 +1,6 @@
 package Units;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class Crossbowman extends RangedClass {
      public Crossbowman(String name, int x, int y) {
@@ -13,8 +13,8 @@ public class Crossbowman extends RangedClass {
           return "Арбалетчик";
      }
 
-     @Override
-     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
-          System.out.println("Арбалетчик выстрелил болт");
-     }
+     // @Override
+     // public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
+     //      System.out.println("Арбалетчик выстрелил болт");
+     // }
 }

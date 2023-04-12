@@ -1,6 +1,6 @@
 package Units;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class Priest extends WizzardClass {
 
@@ -16,13 +16,13 @@ public class Priest extends WizzardClass {
 
      public void heal(BaseHero target) {
           if (mp > 100) {
-               target.getDamage(attack, minDamage, maxDamage);
+               target.getDamage(-attack, -minDamage, -maxDamage);
                mp -= 100;
           }
      }
 
-     @Override
-     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
-          System.out.println("Лекарь произнес заклинание");
-     }
+     // @Override
+     // public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
+     //      System.out.println("Лекарь произнес заклинание");
+     // }
 }

@@ -1,6 +1,6 @@
 package Units;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class Rogue extends MeleeClass {
      public Rogue(String name, int x, int y) {
@@ -12,8 +12,8 @@ public class Rogue extends MeleeClass {
           return "Разбойник";
      }
 
-     @Override
-     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
-          System.out.println("Разбойник ударил дубиной");
-     }
+     // @Override
+     // public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
+     //      System.out.println("Разбойник ударил дубиной");
+     // }
 }

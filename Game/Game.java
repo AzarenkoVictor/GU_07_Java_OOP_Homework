@@ -65,6 +65,14 @@ public class Game {
           return false;
      }
 
+     public static boolean teamIsAlive(ArrayList<BaseHero> team) {
+          for (BaseHero unit : team) {
+               if (unit.isAlive())
+                    return true;
+          }
+          return false;
+     }
+
      public static void makeStep() {
 
           Main.lightHeroes.sort(new Comparator<BaseHero>() {

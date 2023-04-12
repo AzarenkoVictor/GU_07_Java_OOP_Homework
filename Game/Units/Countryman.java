@@ -15,8 +15,7 @@ public class Countryman extends BaseHero {
 
      @Override
      public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
-          System.out.println("Крестьянин ударил вилами");
-          ;
+          if (isAlive)
+               System.out.print(' ');
      }
-
 }

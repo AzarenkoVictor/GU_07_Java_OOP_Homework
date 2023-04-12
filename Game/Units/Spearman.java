@@ -1,6 +1,6 @@
 package Units;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class Spearman extends MeleeClass {
      public Spearman(String name, int x, int y) {
@@ -12,9 +12,9 @@ public class Spearman extends MeleeClass {
           return "Копейщик";
      }
 
-     @Override
-     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
-          System.out.println("Копейщик ударил копьем");
-          ;
-     }
+     // @Override
+     // public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
+     //      System.out.println("Копейщик ударил копьем");
+     //      ;
+     // }
 }

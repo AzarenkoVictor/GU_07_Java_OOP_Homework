@@ -1,6 +1,6 @@
 package Units;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class Magician extends WizzardClass {
 
@@ -13,16 +13,16 @@ public class Magician extends WizzardClass {
           return "Маг ";
      }
 
-     public void magicAttack(BaseHero target) {
-          if (mp > 100) {
-               target.getDamage(attack, minDamage, maxDamage);
-               mp -= 100;
-          }
-     }
+     // public void magicAttack(BaseHero target) {
+     //      if (mp > 100) {
+     //           target.getDamage(attack, minDamage, maxDamage);
+     //           mp -= 100;
+     //      }
+     // }
 
-     @Override
-     public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
-          System.out.println("Маг скастовал заклинание");
-          ;
-     }
+     // @Override
+     // public void step(ArrayList<BaseHero> attackers, ArrayList<BaseHero> targets) {
+     //      System.out.println("Маг скастовал заклинание");
+     //      ;
+     // }
 }
